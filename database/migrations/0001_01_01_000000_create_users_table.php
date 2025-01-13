@@ -20,10 +20,10 @@ return new class extends Migration
 
             $table->string('password');
             $table->string('user_image')->nullable();
-            $table->enum('type', ['admin', 'user', 'company']);
+            $table->enum('type', ['admin', 'user', 'company'])->nullable();
             $table->text('professional_summary')->nullable();
-            $table->boolean('is_active',true);
-            $table->boolean('is_connected',true);
+            $table->boolean('is_active')->default(true);
+            $table->boolean('is_connected')->default(true);
 
             
             

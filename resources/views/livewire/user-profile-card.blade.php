@@ -1,6 +1,6 @@
        <div class="card-body cardprofile text-center">
            <img src="../" class="rounded-circle mb-2" alt="User Avatar" width="80">
-           <h5 class="card-title">User Name</h5>
+           <h5 class="card-title">{{ auth()->user()->user_name?? "" }}</h5>
            <p class="card-text">--</p>
            <a href="/user-profile" class="btn btn-outline-primary profile">View Profile</a>
            <div class="mt-3">

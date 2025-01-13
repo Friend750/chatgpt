@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return redirect('/resources/views/livewire/typeaccount.blade.php');
     }
 }

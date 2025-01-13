@@ -84,3 +84,13 @@
 .chat-list ul::-webkit-scrollbar-thumb:hover {
     background: #888; /* Thumb color on hover */
 }
+
+.notification {
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    color: black;
+    border-radius: 50px;
+    text-align: center;
+}
+

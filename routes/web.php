@@ -42,7 +42,7 @@ Route::get('/Search',Search::class)->name("search");
 Route::get('/feed',PostCard::class);
 Route::get('/EnhanceProfile',EnhanceProfile::class)->name("EnhanceProfile");
 Route::get('/posts',PostCard::class)->name("post");
-Route::get('/chat',Chat::class)->name("chat");
+Route::middleware(['auth'])->get('/chat', Chat::class)->name("chat");
 Route::get('/notifications',Notifications::class)->name("notifications");
 
 // dashboard routes here

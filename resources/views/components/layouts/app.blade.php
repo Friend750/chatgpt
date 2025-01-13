@@ -2,6 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    @vite('resources/js/app.js')
+    @vite('resources/js/bootstrap.js')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -10,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @if (in_array(Route::currentRouteName(), ['typeaccount']))
     <link rel="stylesheet" href="{{ asset('css/typeaccount.css') }}">
 
@@ -105,11 +107,7 @@
         </li>
     </ul> --}}
 
-<<<<<<< HEAD
 @if (!in_array(Route::currentRouteName(), ['dashboard','users-table','route','login', 'register', 'typeaccount', 'interests','home','EnhanceProfile']))
-=======
-
->>>>>>> 3322a0c8c37b94f19409a07a2e59ce1983634eb6
 @include('livewire.navigation-bar')
 @endif
 
@@ -131,7 +129,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/chat.js') }}"></script>
-    @livewireScripts
+    
 </body>
 
 </html>

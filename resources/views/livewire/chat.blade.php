@@ -1,5 +1,4 @@
 <div 
-    class="container-fluid vh-100 d-flex flex-column" 
     x-data="{
         selectedChat: null,
         isMobile: window.innerWidth <= 768,
@@ -39,6 +38,12 @@
                                 {{ $chat['last_message'] }}
                             </p>
                         </div>
+                        {{-- @if($newMessages > 0)
+                        <div wire:click='dismissNotification' class="notification">
+                           
+                        </div>
+                        @endif --}}
+
                     </li>
                 @endforeach
             </ul>
@@ -67,18 +72,18 @@
                 <!-- Messages Area -->
                 <div 
                     class="flex-grow-1 overflow-auto p-3 chat-messages-area" 
-                    x-ref="messagesContainer"
+                  
                 >
                     @foreach($messages as $message)
                     <div 
-                        class="d-flex {{ $message['from_me'] ? 'justify-content-end' : 'justify-content-start' }} mb-3"
+                        class="d-flex {{ $message['sender_id'] ? 'justify-content-end' : 'justify-content-start' }} mb-3" 
                     >
                         <div 
-                            class="message {{ $message['from_me'] ? 'from-me' : 'from-them' }}"
+                            class="message {{ $message['sender_id'] ? 'sender_id' : 'receiver_id' }}"
                         >
-                            {{ $message['text'] }}
+                            {{ $message['message'] }}
                         </div>
-                        <div class="text-muted small mt-1 ml-2">{{ $message['time'] }}</div>
+                        <div class="text-muted small mt-1 ml-2">{{ date('h:i A', strtotime($message['created_at'])); }}</div>
                     </div>
                     @endforeach
                 </div>
@@ -87,11 +92,13 @@
                 <div class="chat-input-section p-3 border-top">
                     <div class="input-group">
                         <input 
-                            type="text" 
-                            class="form-control" 
-                            placeholder="Write your message"
-                            @focus="$nextTick(() => scrollToBottom())"
-                        >
+                        wire:model="message" 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Write your message"
+                        @focus="$nextTick(() => scrollToBottom())"
+                    />
+                    
                         <button 
                             class="btn btn-primary text-white ml-2" 
                             type="button"
@@ -109,4 +116,7 @@
             @endif
         </div>
     </div>
+    <span id="app" data-user-id="{{ auth()->id() }}"></س>
 </div>
+
+

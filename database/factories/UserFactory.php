@@ -24,13 +24,17 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'email' => $this->faker->unique()->safeEmail,
-            'email_verified_at' => $this->faker->optional()->dateTime,
-            'user_name' => $this->faker->unique()->userName,
-            'password' => bcrypt('password'), // Default password
-            'user_image' => $this->faker->optional()->imageUrl(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'email_verified_at' => now(),
+            'user_name' => $this->faker->unique()->userName(),
+            'password' => bcrypt('password'), // كلمة مرور مشفرة
+            'user_image' => $this->faker->optional()->imageUrl(100, 100, 'people'), // صورة عشوائية
             'type' => $this->faker->randomElement(['admin', 'user', 'company']),
-            'professional_summary' => $this->faker->optional()->paragraph,
+            'professional_summary' => $this->faker->optional()->paragraph(),
+            'is_active' => $this->faker->boolean(90), // 90% من المستخدمين نشطين
+            'is_connected' => $this->faker->boolean(50), // 50% من المستخدمين متصلين
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
     /**

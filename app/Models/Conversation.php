@@ -12,10 +12,6 @@ class Conversation extends Model
 
     protected $fillable = ['first_user','second_user','chat_id', 'last_message',];
 
-    public function chat()
-    {
-        return $this->hasMany(Chat::class, 'chat_id');
-    }
 
     public function firstUser()
     {
